@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Food Donation Form</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Donate Food</h1>
+    <form method="POST" action="{% url 'food_donation' %}">
+        {% csrf_token %}
+        <label for="food_name">Food Name:</label><br>
+        <input type="text" id="food_name" name="food_name" required><br><br>
+
+        <label for="quantity">Quantity (kg or pieces):</label><br>
+        <input type="number" id="quantity" name="quantity" min="1" required><br><br>
+
+        <label for="donor_name">Your Name:</label><br>
+        <input type="text" id="donor_name" name="donor_name" required><br><br>
+
+        <label for="pickup_address">Pickup Address:</label><br>
+        <textarea id="pickup_address" name="pickup_address" rows="4" cols="50" required></textarea><br><br>
+
+        <input type="submit" value="Donate">
+    </form>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

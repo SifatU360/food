@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ food_club.name }} Profile</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>{{ food_club.name }} - Profile</h1>
+    <p>Location: {{ food_club.location }}</p>
+
+    <h2>Donations</h2>
+    {% if donations %}
+        <ul>
+        {% for donation in donations %}
+            <li>{{ donation.food_name }} - Quantity: {{ donation.quantity }} - Donor: {{ donation.donor_name }} - Date: {{ donation.created_at|date:"Y-m-d H:i" }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No donations yet.</p>
+    {% endif %}
+
+    <p><a href="{% url 'home' %}">Back to Home</a></p>
+</body>
+</html>
